@@ -1,7 +1,9 @@
 package com.miaosha.access;
 
 import com.miaosha.domain.MiaoshaUser;
-
+/*
+* user参数绑定
+* */
 public class UserContext {
 
     private static ThreadLocal<MiaoshaUser> userHolder = new ThreadLocal<MiaoshaUser>();

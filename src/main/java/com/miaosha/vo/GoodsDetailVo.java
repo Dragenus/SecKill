@@ -2,7 +2,9 @@ package com.miaosha.vo;
 
 import com.miaosha.domain.MiaoshaUser;
 import lombok.Data;
-
+/*
+* 商品详情
+* */
 @Data
 public class GoodsDetailVo {
     private int miaoshaStatus = 0;

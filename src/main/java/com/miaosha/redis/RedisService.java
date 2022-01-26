@@ -11,13 +11,16 @@ import redis.clients.jedis.ScanResult;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* redis业务层
+* */
 @Service
 public class RedisService {
     @Autowired
     JedisPool jedisPool;
 
     /**
-     * 获取当个对象
+     * 获取单个redis对象
      * */
     public <T> T get(KeyPrefix prefix, String key,  Class<T> clazz) {
         Jedis jedis = null;
@@ -39,15 +42,15 @@ public class RedisService {
     public <T> boolean set(KeyPrefix prefix, String key,  T value) {
         Jedis jedis = null;
         try {
-            jedis =  jedisPool.getResource();
+            jedis = jedisPool.getResource();
             String str = beanToString(value);
-            if(str == null || str.length() <= 0) {
+            if(str == null || str.length() == 0) {
                 return false;
             }
             //生成真正的key
-            String realKey  = prefix.getPrefix() + key;
-            int seconds =  prefix.expireSeconds();
-            if(seconds <= 0) {
+            String realKey = prefix.getPrefix() + key;
+            int seconds = prefix.expireSeconds();
+            if(seconds == 0) {
                 jedis.set(realKey, str);
             }else {
                 jedis.setex(realKey, (long)seconds, str);
@@ -86,41 +89,12 @@ public class RedisService {
             returnToPool(jedis);
         }
     }
-
-    /**
-     * 增加值
-     * */
-    public <T> Long incr(KeyPrefix prefix, String key) {
-        Jedis jedis = null;
-        try {
-            jedis = jedisPool.getResource();
-            //生成真正的key
-            String realKey = prefix.getPrefix() + key;
-            return jedis.incr(realKey);
-        }finally {
-            returnToPool(jedis);
-        }
-    }
-    /**
-     * 减少值
-     * */
-    public <T> Long decr(KeyPrefix prefix, String key) {
-        Jedis jedis = null;
-        try {
-            jedis = jedisPool.getResource();
-            //生成真正的key
-            String realKey = prefix.getPrefix() + key;
-            return jedis.decr(realKey);
-        }finally {
-            returnToPool(jedis);
-        }
-    }
     public boolean delete(KeyPrefix prefix) {
         if(prefix == null) {
             return false;
         }
         List<String> keys = scanKeys(prefix.getPrefix());
-        if(keys==null || keys.size() <= 0) {
+        if(keys == null || keys.size() == 0) {
             return true;
         }
         Jedis jedis = null;
@@ -162,7 +136,38 @@ public class RedisService {
             }
         }
     }
+    /**
+     * 增加值
+     * */
+    public <T> Long incr(KeyPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            //生成真正的key
+            String realKey = prefix.getPrefix() + key;
+            return jedis.incr(realKey);
+        }finally {
+            returnToPool(jedis);
+        }
+    }
+    /**
+     * 减少值
+     * */
+    public <T> Long decr(KeyPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            //生成真正的key
+            String realKey = prefix.getPrefix() + key;
+            return jedis.decr(realKey);
+        }finally {
+            returnToPool(jedis);
+        }
+    }
 
+    /*
+    * 对象转字符串
+    * */
     public static <T> String beanToString(T value) {
         if(value == null) {
             return null;
@@ -178,7 +183,9 @@ public class RedisService {
             return JSON.toJSONString(value);
         }
     }
-
+    /*
+    * 字符串转bean对象
+    * */
     @SuppressWarnings("unchecked")
     public static <T> T stringToBean(String str, Class<T> clazz) {
         if(str == null || str.length() <= 0 || clazz == null) {
@@ -194,7 +201,9 @@ public class RedisService {
             return JSON.toJavaObject(JSON.parseObject(str), clazz);
         }
     }
-
+    /*
+    * 返回到连接池中
+    * */
     private void returnToPool(Jedis jedis) {
         if(jedis != null) {
             jedis.close();

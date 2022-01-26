@@ -1,7 +1,9 @@
 package com.miaosha.exception;
 
 import com.miaosha.result.CodeMsg;
-
+/*
+* 全局异常
+* */
 public class GlobalException extends RuntimeException{
     private static final long serialVersionUID = 1L;
 

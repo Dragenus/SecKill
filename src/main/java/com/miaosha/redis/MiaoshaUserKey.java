@@ -1,5 +1,7 @@
 package com.miaosha.redis;
-
+/*
+* miaoshauser token前缀
+* */
 public class MiaoshaUserKey extends BasePrefix {
 
     public static final int TOKEN_EXPIRE = 3600 * 24 * 2;

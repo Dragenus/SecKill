@@ -1,7 +1,9 @@
 package com.miaosha.result;
 
 import lombok.Data;
-
+/*
+* 返回结果类
+* */
 @Data
 public class Result<T> {
 

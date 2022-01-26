@@ -16,7 +16,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import com.miaosha.util.MD5Util;
-
+/*
+* miaoshauser业务层
+* */
 @Service
 public class MiaoshaUserService {
 
@@ -98,6 +100,7 @@ public class MiaoshaUserService {
     }
 
     private void addCookie(HttpServletResponse response, String token, MiaoshaUser user) {
+        //redis存入token前缀，token，用户信息
         redisService.set(MiaoshaUserKey.token, token, user);
         Cookie cookie = new Cookie(COOKI_NAME_TOKEN, token);
         cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());

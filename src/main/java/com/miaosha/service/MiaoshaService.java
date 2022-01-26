@@ -18,7 +18,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.Random;
-
+/*
+* 秒杀业务层
+* */
 @Service
 public class MiaoshaService {
     @Autowired

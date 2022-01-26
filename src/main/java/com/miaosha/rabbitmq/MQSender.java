@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/*
+* 消息生产者
+* */
 @Service
 public class MQSender {
     private static Logger log = LoggerFactory.getLogger(MQSender.class);

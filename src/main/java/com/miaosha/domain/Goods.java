@@ -1,7 +1,9 @@
 package com.miaosha.domain;
 
 import lombok.Data;
-
+/*
+* 商品实体类
+* */
 @Data
 public class Goods {
     private Long id;

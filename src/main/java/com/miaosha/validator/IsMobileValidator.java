@@ -5,7 +5,9 @@ import com.miaosha.util.ValidatorUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
+/*
+* 手机格式校验器
+* */
 public class IsMobileValidator implements ConstraintValidator<IsMobile, String> {
     private boolean required = false;
     @Override

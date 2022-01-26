@@ -3,7 +3,9 @@ package com.miaosha.dao;
 import com.miaosha.domain.MiaoshaOrder;
 import com.miaosha.domain.OrderInfo;
 import org.apache.ibatis.annotations.*;
-
+/*
+* 订单持久层
+* */
 @Mapper
 public interface OrderDao {
     @Select("select * from miaosha_order where user_id=#{userId} and goods_id=#{goodsId}")

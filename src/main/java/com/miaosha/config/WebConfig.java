@@ -1,15 +1,16 @@
 package com.miaosha.config;
 
 import java.util.List;
-
 import com.miaosha.access.AccessInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.*;
-
+/*
+* 进入controller方法前统一处理
+* */
 @Configuration
-public class WebConfig  extends WebMvcConfigurerAdapter{
+public class WebConfig implements WebMvcConfigurer{
 
     @Autowired
     UserArgumentResolver userArgumentResolver;

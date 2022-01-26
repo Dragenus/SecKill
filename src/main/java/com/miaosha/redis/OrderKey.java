@@ -1,5 +1,7 @@
 package com.miaosha.redis;
-
+/*
+ * orderkey前缀设定
+ * */
 public class OrderKey extends BasePrefix {
 
     public OrderKey(String prefix) {

@@ -1,5 +1,7 @@
 package com.miaosha.redis;
-
+/*
+ * goodskey前缀设定
+ * */
 public class GoodsKey extends BasePrefix{
     private GoodsKey(int expireSeconds, String prefix) {
         super(expireSeconds, prefix);

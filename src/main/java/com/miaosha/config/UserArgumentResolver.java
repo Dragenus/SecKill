@@ -14,15 +14,17 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/*
+* user参数解析器
+* */
 @Service
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
     MiaoshaUserService userService;
-
+    //判断是否需要参数解析
     public boolean supportsParameter(MethodParameter parameter) {
         Class<?> clazz = parameter.getParameterType();
-        return clazz== MiaoshaUser.class;
+        return clazz == MiaoshaUser.class;
     }
 
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
@@ -40,8 +42,8 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     }
 
     private String getCookieValue(HttpServletRequest request, String cookiName) {
-        Cookie[]  cookies = request.getCookies();
-        if(cookies == null || cookies.length <= 0){
+        Cookie[] cookies = request.getCookies();
+        if(cookies == null || cookies.length == 0){
             return null;
         }
         for(Cookie cookie : cookies) {

@@ -25,6 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/*
+* 商品列表控制器
+* */
 @Controller
 @RequestMapping("/goods")
 public class GoodsController {

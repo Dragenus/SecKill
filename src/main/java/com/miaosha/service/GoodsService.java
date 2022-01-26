@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/*
+* 商品业务层
+* */
 @Service
 public class GoodsService {
     @Autowired

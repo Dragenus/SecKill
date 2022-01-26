@@ -3,7 +3,9 @@ package com.miaosha.domain;
 import lombok.Data;
 
 import java.util.Date;
-
+/*
+* 订单详情实体类
+* */
 @Data
 public class OrderInfo {
     private Long id;

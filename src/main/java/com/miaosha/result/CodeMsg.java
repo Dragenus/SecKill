@@ -1,7 +1,9 @@
 package com.miaosha.result;
 
 import lombok.Data;
-
+/*
+* 错误代码
+* */
 @Data
 public class CodeMsg {
     private int code;
@@ -37,6 +39,7 @@ public class CodeMsg {
         this.code = code;
         this.msg = msg;
     }
+    //返回带参错误
     public CodeMsg fillArgs(Object... args) {
         int code = this.code;
         String message = String.format(this.msg, args);

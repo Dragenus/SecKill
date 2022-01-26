@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/*
+* 拦截异常处理
+* */
 @ControllerAdvice
 @ResponseBody
 public class GlobalExceptionHandler {

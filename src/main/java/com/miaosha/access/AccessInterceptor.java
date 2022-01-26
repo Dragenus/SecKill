@@ -18,7 +18,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
-
+/*
+* 拦截器预处理
+* */
 @Service
 public class AccessInterceptor implements HandlerInterceptor {
 
@@ -33,6 +35,7 @@ public class AccessInterceptor implements HandlerInterceptor {
             throws Exception {
         if(handler instanceof HandlerMethod) {
             MiaoshaUser user = getUser(request, response);
+            //绑定线程，判断注解
             UserContext.setUser(user);
             HandlerMethod hm = (HandlerMethod)handler;
             AccessLimit accessLimit = hm.getMethodAnnotation(AccessLimit.class);
@@ -50,7 +53,7 @@ public class AccessInterceptor implements HandlerInterceptor {
                 }
                 key += "_" + user.getId();
             }else {
-                //do nothing
+                //nothing
             }
             AccessKey ak = AccessKey.withExpire(seconds);
             Integer count = redisService.get(ak, key, Integer.class);

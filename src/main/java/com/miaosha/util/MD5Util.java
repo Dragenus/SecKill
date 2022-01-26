@@ -1,7 +1,9 @@
 package com.miaosha.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
-
+/*
+* md5工具类
+* */
 public class MD5Util {
 
     public static String md5(String src) {
@@ -10,17 +12,24 @@ public class MD5Util {
 
     private static final String salt = "1a2b3c4d";
 
+    /*
+    * 用户输入密码进行md5传入服务端
+    * */
     public static String inputPassToFormPass(String inputPass) {
         String str = "" + salt.charAt(0) + salt.charAt(2) + inputPass +salt.charAt(5) + salt.charAt(4);
         System.out.println(str);
         return md5(str);
     }
-
+    /*
+    * 从服务端传入数据库
+    * */
     public static String formPassToDBPass(String formPass, String salt) {
         String str = "" + salt.charAt(0) + salt.charAt(2) + formPass +salt.charAt(5) + salt.charAt(4);
         return md5(str);
     }
-
+    /*
+    * 明文密码转数据库密码
+    * */
     public static String inputPassToDbPass(String inputPass, String saltDB) {
         String formPass = inputPassToFormPass(inputPass);
         String dbPass = formPassToDBPass(formPass, saltDB);

@@ -7,7 +7,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-
+/*
+* 防刷注解
+* */
 @Retention(RUNTIME)
 @Target(METHOD)
 public @interface AccessLimit {

@@ -1,5 +1,8 @@
 package com.miaosha.redis;
 
+/*
+* 基本前缀
+* */
 public abstract class BasePrefix implements KeyPrefix{
     private int expireSeconds;
 
@@ -19,7 +22,9 @@ public abstract class BasePrefix implements KeyPrefix{
         //默认0代表永不过期
         return expireSeconds;
     }
-
+    /*
+    * 不同类不同前缀
+    * */
     public String getPrefix() {
         String className = getClass().getSimpleName();
         return className+":" + prefix;

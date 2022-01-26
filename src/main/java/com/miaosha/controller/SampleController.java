@@ -1,5 +1,4 @@
 package com.miaosha.controller;
-
 import com.miaosha.domain.User;
 import com.miaosha.rabbitmq.MQSender;
 import com.miaosha.redis.RedisService;
@@ -15,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/*
+*测试用controller
+* */
 @Controller
 @RequestMapping("/demo")
 public class SampleController {
@@ -30,28 +32,28 @@ public class SampleController {
     //	@RequestMapping("/mq/header")
 //    @ResponseBody
 //    public Result<String> header() {
-//		sender.sendHeader("hello,imooc");
+//		sender.sendHeader("hello");
 //        return Result.success("Hello，world");
 //    }
 //
 //	@RequestMapping("/mq/fanout")
 //    @ResponseBody
 //    public Result<String> fanout() {
-//		sender.sendFanout("hello,imooc");
+//		sender.sendFanout("hello");
 //        return Result.success("Hello，world");
 //    }
 //
 //	@RequestMapping("/mq/topic")
 //    @ResponseBody
 //    public Result<String> topic() {
-//		sender.sendTopic("hello,imooc");
+//		sender.sendTopic("hello");
 //        return Result.success("Hello，world");
 //    }
 //
 //	@RequestMapping("/mq")
 //    @ResponseBody
 //    public Result<String> mq() {
-//		sender.send("hello,imooc");
+//		sender.send("hello");
 //        return Result.success("Hello，world");
 //    }
 
@@ -69,13 +71,13 @@ public class SampleController {
 
     @RequestMapping("/hello/themaleaf")
     public String themaleaf(Model model) {
-        model.addAttribute("name", "Joshua");
+        model.addAttribute("name", "test success");
         return "hello";
     }
 
     @RequestMapping("/thymeleaf")
     public String thymeleaf(Model model) {
-        model.addAttribute("name", "Joshua");
+        model.addAttribute("name", "test success");
         return "hello";
     }
 
@@ -91,7 +93,7 @@ public class SampleController {
     public Result<Boolean> redisSet() {
         User user  = new User();
         user.setId(1);
-        user.setName("1111");
+        user.setName("11");
         redisService.set(UserKey.getById, ""+1, user);//UserKey:id1
         return Result.success(true);
     }

@@ -1,5 +1,7 @@
 package com.miaosha.redis;
-
+/*
+ * accesskey前缀设定
+ * */
 public class AccessKey extends BasePrefix{
 
     private AccessKey( int expireSeconds, String prefix) {

@@ -6,14 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+* user业务层接口
+* */
 @Service
 public class UserService {
     @Autowired
     UserDao userDao;
+
     public User getById(int id) {
         return userDao.getById(id);
     }
-
+    /*测试事务
+    * */
     @Transactional
     public boolean tx() {
         User u1= new User();

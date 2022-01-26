@@ -1,5 +1,7 @@
 package com.miaosha.redis;
-
+/*
+ * miaoshakey前缀设定
+ * */
 public class MiaoshaKey extends BasePrefix{
     private MiaoshaKey( int expireSeconds, String prefix) {
         super(expireSeconds, prefix);

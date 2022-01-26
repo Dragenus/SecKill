@@ -3,7 +3,9 @@ package com.miaosha.domain;
 import lombok.Data;
 
 import java.util.Date;
-
+/*
+* 秒杀用户实体类
+* */
 @Data
 public class MiaoshaUser {
     private Long id;

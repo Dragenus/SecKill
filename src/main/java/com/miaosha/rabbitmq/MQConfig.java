@@ -11,7 +11,9 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+/*
+* 消息队列配置
+* */
 @Configuration
 public class MQConfig {
 
@@ -81,6 +83,8 @@ public class MQConfig {
     public Queue headerQueue1() {
         return new Queue(HEADER_QUEUE, true);
     }
+
+
     @Bean
     public Binding headerBinding() {
         Map<String, Object> map = new HashMap<String, Object>();
