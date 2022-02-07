@@ -13,6 +13,7 @@ import java.util.List;
 * */
 @Mapper
 public interface GoodsDao {
+    //得到秒杀物品信息，miaosha_goods
     @Select("select g.*,mg.stock_count, mg.start_date, mg.end_date,mg.miaosha_price from miaosha_goods mg left join goods g on mg.goods_id = g.id")
     public List<GoodsVo> listGoodsVo();
 
